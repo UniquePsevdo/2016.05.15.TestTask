@@ -1,4 +1,5 @@
 angular.module("testTaskApp", ["ngRoute", 'ngMaterial', 'appServices'])
+    .constant("baseUrl", "https://infinite-depths-56882.herokuapp.com/")
     .controller("formCtrl", ['$scope', '$location', '$timeout', '$mdToast', 'apiService',  function ($scope, $location, $timeout, $mdToast, apiService) {
         $scope.sum = {value:""};
         $scope.term = {value:""};
@@ -79,7 +80,7 @@ angular.module("testTaskApp", ["ngRoute", 'ngMaterial', 'appServices'])
 
         /*clicking on corresponding tab when url is changing*/
         $scope.$on("$locationChangeSuccess", function(event, newUrl){
-            var arr = newUrl.split('http://localhost:3000/#/');                 //!!!!!!!!!! change to base URL
+            var arr = newUrl.split('https://infinite-depths-56882.herokuapp.com/:3000/#/');
             var pageNumber = arr[1];
             if(isValidPageNumber(pageNumber) && $scope.tabs){
                 $timeout(function(){
