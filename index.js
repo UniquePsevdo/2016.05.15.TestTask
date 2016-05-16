@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-var port ='3000';
+var port = process.env.PORT || 3000;
 app.set('port', port);
 
 var routes = require('./routes/index');
@@ -27,5 +27,5 @@ app.set('view engine', 'html');
 var server = http.createServer(app);
 
 server.listen(port, function(){
-    console.log('Listening on 3000');
+    console.log('Listening port...');
 });
