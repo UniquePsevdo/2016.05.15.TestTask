@@ -1,0 +1,23 @@
+{
+  "name": "2016.05.15.TestTask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-material": "^1.0.8",
+    "body-parser": "^1.15.1",
+    "consolidate": "^0.14.1",
+    "express": "^4.13.4",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}

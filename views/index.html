@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div ng-cloak>
+    <md-content layout="row" layout-align="center center">
+        <md-card flex flex-sm="100" flex-gt-sm="90" flex-md="80" flex-gt-md="70">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Данные пользователя</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <form name="form">
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="шаг 1" md-on-select="changeTab(1)">
+                            <md-content class="md-padding">
+                                <ng-form name="subForm1">
+                                    <md-input-container layout="row">
+                                        <label>Сумма:</label>
+                                        <input type="number" min="1" max="10000" required ng-model="sum.value" name="sum" ng-blur="showValidation('sum')" autocomplete="off">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Срок:</label>
+                                        <input type="number" min="1" max="12" required ng-model="term.value" name="term" ng-blur="showValidation('term')" autocomplete="off">
+                                    </md-input-container>
+                                    <div layout="row" layout-align="end center">
+                                        <md-button class="md-raised md-primary" ng-click="changeTab(2)" ng-disabled="!subForm1.$valid">Далее</md-button>
+                                    </div>
+                                </ng-form>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="шаг 2" md-on-select="changeTab(2)" ng-disabled="!subForm1.$valid">
+                            <md-content class="md-padding">
+                                <ng-form name="subForm2">
+                                    <md-input-container layout="row">
+                                        <label>ИНН:</label>
+                                        <input type="number" ng-pattern="/^[0-9]{10}$/" required name="idNumber" ng-blur="showValidation('idNumber')" ng-model="idNumber.value">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Фамилия:</label>
+                                        <input type="text" required ng-model="surname.value" name="surname" ng-blur="showValidation('surname')" autocomplete="off">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Имя:</label>
+                                        <input type="text" required ng-model="name.value" name="name" ng-blur="showValidation('name')" autocomplete="off">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Город:</label>
+                                        <input class="ff_elem" type="text" name="city" value="" ng-model="city.value" ng-blur="showValidation('city')" required=""/>
+                                    </md-input-container>
+                                    <div layout="row" layout-align="end center">
+                                        <md-button class="md-raised md-primary" ng-click="changeTab(1)">Назад</md-button>
+                                        <md-button class="md-raised md-primary" ng-click="changeTab(3)">Далее</md-button>
+                                    </div>
+                                </ng-form>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="шаг 3" md-on-select="changeTab(3)" ng-disabled="!subForm2.$valid">
+                            <md-content class="md-padding">
+                                <ng-form name="subForm3">
+                                    <md-input-container layout="row">
+                                        <label>Сумма:</label>
+                                        <input type="number" min="1" max="10000" required ng-model="sum.value" name="sum" ng-blur="showValidation('sum')" autocomplete="off">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Срок:</label>
+                                        <input type="number" min="1" max="12" required ng-model="term.value" name="term" ng-blur="showValidation('term')" autocomplete="off">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>ИНН:</label>
+                                        <input type="number" ng-pattern="/^[0-9]{10}$/" required name="idNumber" ng-blur="showValidation('idNumber')" ng-model="idNumber.value">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Фамилия:</label>
+                                        <input type="text" required ng-model="surname.value" name="surname" ng-blur="showValidation('surname')" autocomplete="off">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Имя:</label>
+                                        <input type="text" required ng-model="name.value" name="name" ng-blur="showValidation('name')" autocomplete="off">
+                                    </md-input-container>
+                                    <md-input-container layout="row">
+                                        <label>Город:</label>
+                                        <input class="ff_elem" type="text" name="city" value="" ng-model="city.value" ng-blur="showValidation('city')" required=""/>
+                                    </md-input-container>
+                                    <div layout="row" layout-align="end center">
+                                        <md-button class="md-raised md-primary" ng-click="changeTab(2)">Назад</md-button>
+                                        <md-button class="md-raised md-primary" ng-disabled="!subForm3.$valid" ng-click="sendData()">Отправить</md-button>
+                                    </div>
+                                </ng-form>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </form>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</div>
+{% endblock %}
